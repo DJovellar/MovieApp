@@ -70,7 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MovieApp.wsgi.application'
 
-LOGIN_REDIRECT_URL = '/home'
+#LOGIN_REDIRECT_URL = '/home'
 
 
 # Database

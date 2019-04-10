@@ -17,8 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views
+from django.views.generic import RedirectView
+from myMovieApp.views import home_view, logged_in_view
 
 urlpatterns = [
+    path('', home_view, name='home'),
+    path('home/', home_view, name='home'),
+    path('accounts/profile/', logged_in_view, name='loggedin'),
     path('admin/', admin.site.urls),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
