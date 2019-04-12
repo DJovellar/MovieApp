@@ -20,13 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'e%zxv*n=f_k+-#8aaqlfe=5y#41@yoipfb=ccl9--(m^1s@_$p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['enigmatic-tundra-59477.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -71,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MovieApp.wsgi.application'
 
-#LOGIN_REDIRECT_URL = '/home'
+# LOGIN_REDIRECT_URL = '/home'
 
 
 # Database
@@ -121,8 +122,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROUTE = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
 django_heroku.settings(locals())
