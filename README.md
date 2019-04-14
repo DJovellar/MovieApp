@@ -59,7 +59,7 @@ yum install docker-engine
 	
 	Finally, open [docker local link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login 		is the same user the one created for the django project.
 	
-## Deployment proposed
+## Deployment proposal
 
 See this [document](https://github.com/DJovellar/MovieApp/blob/master/deployment_proposed_sol.pdf) for the proposal.
 
