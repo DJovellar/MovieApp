@@ -58,4 +58,4 @@ yum install docker-engine
 	docker run -p 8000:8000 -i -t django_application_image
 	```
 	
-	Finally, go to the [browser](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login is the same user the one created for the django project.
+	Finally, open [link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login is the same user the one created for the django project.
