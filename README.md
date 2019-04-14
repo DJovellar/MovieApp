@@ -16,7 +16,7 @@ Needs python 3.7.2 installed. To install it, run the following command:
 ```bash
 pip3 install -r requirements.txt  
 ```
-For the docker-container part, it needs the docker-engine. To install it, run following commands:
+For the docker-container part, it needs the docker-engine. To install it, run following command:
 ```bash
 yum install docker-engine  
 ```
