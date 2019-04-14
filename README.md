@@ -30,12 +30,12 @@ yum install docker-engine
 	python3 manage.py createsuperuser
 	python3 manage.py runserver 
 	```
-	and then to check everything is working open: [web](http://127.0.0.1:8000/login) and the application should show up.
+	and then to check everything is working open: [django local link](http://127.0.0.1:8000/login) and the application should show up.
 	
 	
 - Heroku implementation:
 
-	In order to see the application implemened in Heroku open: [link](https://movieappwebproject.herokuapp.com/login).
+	In order to see the application implemened in Heroku open: [heroku link](https://movieappwebproject.herokuapp.com/login).
 	````
 	User: admin	
 	Password: admin123
@@ -58,4 +58,4 @@ yum install docker-engine
 	docker run -p 8000:8000 -i -t django_application_image
 	```
 	
-	Finally, open [link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login is the same user the one created for the django project.
+	Finally, open [docker local link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login is the same user the one created for the django project.
