@@ -1,6 +1,6 @@
 
 # Movie Application web
-This repository tale a project django implemented with heroku and also with a docker-container. A project that in the future will deal with a webpage that will show all the information of all the films with the trailer and where can buy or watch online. Additionally, users can dial and write reviews about it.
+This repository contains a project django implemented with heroku and also with a docker-container. A project that in the future will deal with a webpage that will show all the information of all the films with the trailer and where can buy or watch online. Additionally, users can rate and write reviews about it.
 
 For now we have implemented the login, admin page, home and the structure of the data base.
 
