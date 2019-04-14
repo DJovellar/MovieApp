@@ -1,4 +1,3 @@
-
 # Movie Application web
 This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films (including the trailer) and where to buy and/or watch the movie. Additionally, users can rate and write reviews about films.
 
@@ -58,4 +57,9 @@ yum install docker-engine
 	docker run -p 8000:8000 -i -t django_application_image
 	```
 	
-	Finally, open [docker local link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login is the same user the one created for the django project.
+	Finally, open [docker local link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login 		is the same user the one created for the django project.
+	
+## Deployment proposed
+
+See this [document](https://github.com/DJovellar/MovieApp/blob/master/deployment_proposed_sol.pdf) for the proposal.
+
