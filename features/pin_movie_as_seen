@@ -1,0 +1,21 @@
+Feature:  Pin movie as seen
+  In order to distinguish between seen and not seen films,
+  As a user,
+  I want to be able to pin a movie as already seen.
+
+  Background: There is a register user and a movie
+    Given Exists a user “user1” with password “password”
+    And Exists a movie 
+      | name       | 
+      | Marte       |
+
+  Scenario: Pin movie as seen
+    Given I login as user "user1" with password "password"
+    When I pin a movie “Marte” as seen
+    Then Movie “Marte” add to list seen films
+
+  Scenario: Pin movie as seen but not logged in
+    Given I'm not logged in
+    When I pin a movie “Marte” as seen
+    Then I'm redirected to the login form
+    And Movie “Marte” doesn't add to list seen films
