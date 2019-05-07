@@ -1,20 +1,20 @@
 Feature: View movie details
-  In order to view all the details about a certain movie
+  In order to view all the details about a certain moviee
   As a user,
-  I want to be provided the general information about a certain movie (release year,    
+  I want to be provided the general information about a certain movie (release year,
   director, actors,...), a source where I can watch the movie and the reviews.
 
 
-  Background: There is one movie and its details 
+  Background: There is one movie and its details
     Given there is a user “user1” with password “password”
     And exists a user “user2” with password “password”
-    And Exists a movie 
+    And Exists a movie
       | name      | release year     | director            | main actors  | rating  | rating users
       | Apollo 11 |  2019            | Todd. D. Miller | Buzz Aldrin  | 8 / 10       | 8 / 10
     And Exists review at movie “Apollo 11” by “user2”
       | rating | comment    |
       | 9/10   | Quite good |
-    And Exists a movie 
+    And Exists a movie
       | name       | release year | director      | main actors    | rating | rating users |
       | Green Book |  2019        | Peter Farelly | Viggo Mortesen | 8 / 10    | 8 / 10     |
 
@@ -38,5 +38,3 @@ Feature: View movie details
         | rating          | comment       | user          |
       And The list contains 0 reviews
       And There are 0 reviews
-
-
