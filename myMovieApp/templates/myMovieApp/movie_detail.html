@@ -1,0 +1,76 @@
+{% extends "myMovieApp/base.html" %}
+{% block title %}MyMovies - {{ movie.name }}{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<span vocab="http://schema.org/" typeof="Movies">
+
+<h1>
+    <span property="name">{{ movie.name }}</span>
+</h1>
+
+<h2>Information:</h2>
+<p>
+    {{ movie.cast }}, {{ movie.description }} <br/>
+</p>
+
+
+<h2>Reviews</h2>
+{% if movie.review_set.all|length > 0 %}
+<span rel="aggregateRating">
+    <p typeof="AggregateRating">
+        Average rating <span property="ratingValue">{{ movie.averageRating|stringformat:".1f" }}</span>/5
+        {% with movie.review_set.all|length as reviewCount %}
+        from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
+        {% endwith %}
+    </p>
+</span>
+<ul rel="review">
+    {% for review in movie.review_set.all %}
+        <li typeof="Review">
+            <p rel="reviewRating" typeof="Rating">
+                <span property="ratingValue">{{ review.rating }}</span>/5 stars
+            </p>
+            <p property="description">{% if review.description %}{{ review.description }}{% endif %}</p>
+            <p>Created by <span property="author">{{ review.user }}</p>
+        </li>
+        <h1>
+            {% if user == review.user %}
+              (<a href="{% url 'review_edit' movie.id review.id %}">edit</a>)
+            {% endif %}
+        </h1>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+</span>
+
+<h3>Add Review</h3>
+<form action="{% url 'review_create' movie.id %}" method="post">
+    {% csrf_token %}
+    Message: <textarea name="description" id="description" rows="4"></textarea>
+    <p>Rating:</p>
+    <body>
+      <div class="rate">
+        <input type="radio" id="star5" name="rating" value="5" default/>
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rating" value="1" checked="checked"/>
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </body>
+    <input type="submit" value="Review" />
+</form>
+
+
+{% endblock %}
+{% block footer %}
+    Created by admin
+{% endblock %}

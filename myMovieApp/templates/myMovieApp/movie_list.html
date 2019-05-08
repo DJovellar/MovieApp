@@ -1,0 +1,11 @@
+{% extends "myMovieApp/base.html" %}
+{% block content %}
+<h1>
+    Movies
+<ul>
+    {% for movie in movies_list %}
+        <li><a href="{% url 'movie_detail' movie.id %}">{{ movie.name }}</a></li>
+    {% empty %}<li>Sorry, no movies registered yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

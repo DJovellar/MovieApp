@@ -5,7 +5,7 @@ Feature: List movies
 
   Background: There are 10 registered movies
     Given Exists a user "user" with password "password"
-    And Exists movies registered 
+    And Exists movies registered
       | name            | date        |
       | The First       | 1970-01-01  |
       | The Second      | 1970-01-02  |
@@ -18,9 +18,9 @@ Feature: List movies
       | The Ninth       | 1970-01-05  |
       | The Tenth       | 1970-01-05  |
 
-  
+
   Scenario: List movies
-    When I list the last movies
+    When I list movies
     Then I´m viewing a list containing
        | name            |
        | The Tenth            |
@@ -34,5 +34,3 @@ Feature: List movies
        | The Second      |
        | The First       |
     And The list contains 10 movies
-
-
