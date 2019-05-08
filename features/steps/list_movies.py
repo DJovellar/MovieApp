@@ -1,3 +1,5 @@
+from behave import *
+
 @given(u'Exists movies registered')
 def step_impl(context):
     raise NotImplementedError(u'STEP: Given Exists movies registered')
