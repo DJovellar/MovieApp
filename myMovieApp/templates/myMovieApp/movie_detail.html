@@ -37,8 +37,8 @@
     {{ movie.release }} <br/>
 </p>
 </div>
-
-<h2 style="margin-top: -40%; margin-left: 500px">Reviews</h2>
+<div>
+<h2 style="margin-top: -350px; margin-left: 500px">Reviews</h2>
 {% if movie.review_set.all|length > 0 %}
 <span rel="aggregateRating">
     <p style="margin-left: 500px"typeof="AggregateRating">
@@ -48,6 +48,8 @@
         {% endwith %}
     </p>
 </span>
+
+
 <ul rel="review">
     {% for review in movie.review_set.all %}
         <li style="list-style-type:none; border:2px solid grey; width: 400px; height: 120px; text-align: left; margin-left: 450px" typeof="Review">
@@ -84,7 +86,7 @@
 </ul>
 {% endif %}
 
-
+</div>
 
 </span>
 
@@ -114,7 +116,6 @@
       </body>
       <input style="margin-bottom: 100px; margin-left: 80px; margin-top: 10px; background-color: #0066FF" type="submit" value="Review" />
   </form>
-
 {% endif %}
 
 {% endblock %}
