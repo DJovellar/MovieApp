@@ -6,8 +6,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
+from django.urls import reverse_lazy
 
 from myMovieApp.models import Movie, Review
 
@@ -21,7 +22,16 @@ def logged_in_view(request, *args, **kwargs):
 
 def logged_out_view(request, *args, **kwargs):
     return render(request, "myMovieApp/logged_out.html", {})
-    
+
+class ReviewDelete(DeleteView):
+    model = Review
+    template_name = 'myMovieApp/form_delete.html'
+    success_url = reverse_lazy('movie_detail', kwargs={'pk': 'get_object.movie.pk'})
+
+    def get_object(self, *args, **kwargs):
+        obj = super(ReviewDelete, self).get_object(*args, **kwargs)
+
+
 class LoginRequiredMixin(object):
     @method_decorator(login_required())
     def dispatch(self, *args, **kwargs):
@@ -57,4 +67,10 @@ def review(request, pk):
         user=request.user,
         movie=movie)
     new_review.save()
+    return HttpResponseRedirect(reverse('movie_detail', args=(movie.id,)))
+
+@login_required()
+def delete_review(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    Review.objects.get(movie=movie, user=request.user).delete()
     return HttpResponseRedirect(reverse('movie_detail', args=(movie.id,)))

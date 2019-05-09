@@ -2,23 +2,46 @@
 {% block title %}MyMovies - {{ movie.name }}{% endblock %}
 {% block content %}
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <span vocab="http://schema.org/" typeof="Movies">
 
-<h1>
-    <span property="name">{{ movie.name }}</span>
+<h1 align="left" style="margin-left: 120px">
+    <u><span property="name">{{ movie.name }}</span></u>
 </h1>
 
-<h2>Information:</h2>
-<p>
-    {{ movie.cast }}, {{ movie.description }} <br/>
+<h4 align="left" style="margin-left: 30px; margin-top: 20px">Description:</h4>
+<div align="left">
+<p style="text-align: left; width: 500px; margin-left: 30px;">
+    {{ movie.description }} <br/>
 </p>
+</div>
 
+<h4 align="left" style="margin-left: 30px; margin-top: 20px">Genre:</h4>
+<div align="left">
+<p style="text-align: left; width: 500px; margin-left: 30px;">
+    {{ movie.genre }} <br/>
+</p>
+</div>
 
-<h2>Reviews</h2>
+<h4 align="left" style="margin-left: 30px; margin-top: 20px">Cast:</h4>
+<div align="left">
+<p style="text-align: left; width: 500px; margin-left: 30px;">
+    {{ movie.cast }} <br/>
+</p>
+</div>
+
+<h4 align="left" style="margin-left: 30px; margin-top: 20px">Release year:</h4>
+<div align="left">
+<p style="text-align: left; width: 500px; margin-left: 30px;">
+    {{ movie.release }} <br/>
+</p>
+</div>
+
+<h2 style="margin-top: -25%; margin-left: 500px">Reviews</h2>
 {% if movie.review_set.all|length > 0 %}
 <span rel="aggregateRating">
-    <p typeof="AggregateRating">
+    <p style="margin-left: 500px"typeof="AggregateRating">
         Average rating <span property="ratingValue">{{ movie.averageRating|stringformat:".1f" }}</span>/5
         {% with movie.review_set.all|length as reviewCount %}
         from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
@@ -27,18 +50,36 @@
 </span>
 <ul rel="review">
     {% for review in movie.review_set.all %}
-        <li typeof="Review">
+        <li style="list-style-type:none; border:2px solid grey; width: 400px; height: 120px; text-align: left; margin-left: 450px" typeof="Review">
+          <div style="margin-left: 10px; margin-top: 10px">
             <p rel="reviewRating" typeof="Rating">
                 <span property="ratingValue">{{ review.rating }}</span>/5 stars
             </p>
             <p property="description">{% if review.description %}{{ review.description }}{% endif %}</p>
             <p>Created by <span property="author">{{ review.user }}</p>
-        </li>
-        <h1>
+          </div>
+
+          <h1 align="right" style="margin-top: -80px">
+              {% if user == review.user %}
+              <form action="{% url 'review_delete' movie.id %}" method="post">
+                {% csrf_token %}
+                <input style="font-size: 20px; margin-right: 10px; background-color: #A00000; color: white;" type="submit" value="delete" />
+              </form>
+
+              {% endif %}
+          </h1>
+
+        <h1 align="right" style="margin-top: -100px">
             {% if user == review.user %}
-              (<a href="{% url 'review_edit' movie.id review.id %}">edit</a>)
+            <form action="{% url 'review_edit' movie.id review.id %}">
+              <input style="font-size: 20px; margin-right: 10px; background-color: #FF9933; color: white;" type="submit" value="edit" />
+            </form>
+
             {% endif %}
         </h1>
+
+
+        </li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -47,30 +88,33 @@
 
 </span>
 
-<h3>Add Review</h3>
-<form action="{% url 'review_create' movie.id %}" method="post">
-    {% csrf_token %}
-    Message: <textarea name="description" id="description" rows="4"></textarea>
-    <p>Rating:</p>
-    <body>
-      <div class="rate">
-        <input type="radio" id="star5" name="rating" value="5" default/>
-        <label for="star5" title="text">5 stars</label>
-        <input type="radio" id="star4" name="rating" value="4" />
-        <label for="star4" title="text">4 stars</label>
-        <input type="radio" id="star3" name="rating" value="3" />
-        <label for="star3" title="text">3 stars</label>
-        <input type="radio" id="star2" name="rating" value="2" />
-        <label for="star2" title="text">2 stars</label>
-        <input type="radio" id="star1" name="rating" value="1" checked="checked"/>
-        <label for="star1" title="text">1 star</label>
-      </div>
-    </body>
-    <input type="submit" value="Review" />
-</form>
+{% if user.is_authenticated %}
 
+  <h3 style="margin-left: 250px">Add Review</h3>
+  <form style="margin-left: 380px" action="{% url 'review_create' movie.id %}" method="post">
+      {% csrf_token %}
+      <p style="margin-left: -225px; margin-bottom: 0px">
+        Message:
+      </p>
+      <textarea style="width:400px; margin-left: 110px" name="description" id="description" rows="4"></textarea>
+      <p style="margin-left: -245px; margin-top: 5px">Rating:</p>
+      <body>
+        <div style="margin-left: 55px; margin-top: -10px" class="rate">
+          <input type="radio" id="star5" name="rating" value="5" default/>
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1" name="rating" value="1" checked="checked"/>
+          <label for="star1" title="text">1 star</label>
+        </div>
+      </body>
+      <input style="margin-bottom: 100px; margin-left: 80px; margin-top: 10px; background-color: #0066FF" type="submit" value="Review" />
+  </form>
 
-{% endblock %}
-{% block footer %}
-    Created by admin
+{% endif %}
+
 {% endblock %}

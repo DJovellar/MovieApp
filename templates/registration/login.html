@@ -2,12 +2,12 @@
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
 
-    <h2> Login </h2>
+    <h1 align="center"> Login </h1>
 
-    <form method="post" action="{% url 'login' %}">
-        <table>
+    <form align="center" style="margin-left: -70px" method="post" action="{% url 'login' %}">
+        <table align="center">
             <tr>
-                <td>{{ form.username.label_tag }}</td>
+                <td >{{ form.username.label_tag }}</td>
                 <td>{{ form.username }}</td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
             </tr>
         </table>
 
-        <input type="submit" value="login" />
+        <input style="margin-left: 70px; margin-top: 10px; width: 70px; height:35px; background-color: #00aae4" type="submit" value="login" />
 
         {% csrf_token %}
 </form>

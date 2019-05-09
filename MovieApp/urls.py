@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views
 from django.views.generic import RedirectView
-from myMovieApp.views import home_view, logged_in_view, logged_out_view, movie_view, review, LoginRequiredCheckIsOwnerUpdateView
+from myMovieApp.views import home_view, logged_in_view, logged_out_view, movie_view, review, LoginRequiredCheckIsOwnerUpdateView, delete_review
 from django.views.generic import DetailView, ListView
 from myMovieApp.models import Movie, Review
 from myMovieApp.forms import ReviewForm
@@ -31,9 +31,10 @@ urlpatterns = [
     path('accounts/profile/', logged_in_view, name='loggedin'),
     path('admin/', admin.site.urls),
     path('login/', views.LoginView.as_view(), name='login'),
-    path('logout/', logged_out_view, name='loggedout'),
+    path('logout/', views.LogoutView.as_view(), name='loggedout'),
     path('movies/<int:pk>', movie_view.as_view(), name='movie_detail'),
     path('movies/<int:pk>/reviews/create', review, name='review_create'),
+    path('movies/<int:pk>/reviews/delete', delete_review, name='review_delete'),
     path('movies/<int:pkr>/reviews/<int:pk>/edit',
         LoginRequiredCheckIsOwnerUpdateView.as_view(
             model=Review,
