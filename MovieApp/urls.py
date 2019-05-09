@@ -48,7 +48,8 @@ urlpatterns = [
                         model=Movie,
                         queryset=Movie.objects.all(),
                         context_object_name="movies_list",
-                        template_name='myMovieApp/movie_list.html')),
+                        template_name='myMovieApp/movie_list.html'),
+                        name='movies_list'),
 
 
 

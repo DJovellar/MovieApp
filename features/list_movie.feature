@@ -14,7 +14,7 @@ Feature: List movies
       | The Fifth       | 1970-01-05  |
       | The Sixth       | 1970-01-05  |
       | The Seventh     | 1970-01-05  |
-      | The Eighth       | 1970-01-05  |
+      | The Eighth      | 1970-01-05  |
       | The Ninth       | 1970-01-05  |
       | The Tenth       | 1970-01-05  |
 
@@ -23,14 +23,14 @@ Feature: List movies
     When I list movies
     Then I´m viewing a list containing
        | name            |
-       | The Tenth            |
-       | The Ninth            |
-       | The Eighth            |
-       | The Seventh      |
-       | The Sixth            |
-       | The Fifth       |
-       | The Fourth      |
-       | The Third       |
-       | The Second      |
        | The First       |
+       | The Second      |
+       | The Third       |
+       | The Fourth      |
+       | The Fifth       |
+       | The Sixth       |
+       | The Seventh     |
+       | The Eighth      |
+       | The Ninth       |
+       | The Tenth       |
     And The list contains 10 movies
