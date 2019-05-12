@@ -39,8 +39,9 @@ For behave to work we also used Chrome and chromedriver.
 
 	In order to see the application implemened in Heroku open: [heroku link](https://movieappwebproject.herokuapp.com/login).
 	````
-	User: admin	
-	Password: admin123
+	User: *****	
+	Password: ********
+	VIEW VIRTUAL CAMPUS activity for username and password
 	````
 
 - Docker-container implementation:
