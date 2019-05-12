@@ -29,22 +29,6 @@ Feature: Review movie
     When I view the movie "Interstellar" details
     Then There is no "review" link available
 
-  Scenario: User new review on same movie replaces previous review
-    Given Exists a review at movie "Interstellar" by "user1"
-      | rating          | description   |
-      | 4               | Quite good    |
-    And I login as user "user1" with password "password"
-    When I register a review at movie "Interstellar"
-      | rating          | description    |
-      | 2               | Not so happy   |
-    Then I'm viewing movie details including
-      | name            | release    | cast          |
-      | Interstellar    | 2014       | Anne Hathaway |
-    And I'm viewing a movie reviews list containing
-      | rating          | description   | user        |
-      | 2/5 stars       | Not so happy  | user1       |
-    And The list contains 1 reviews
-
   Scenario: Edit owned review
     Given I login as user "user1" with password "password"
     And Exists a review at movie "Interstellar" by "user1"
