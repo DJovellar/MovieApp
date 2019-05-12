@@ -1,23 +1,22 @@
+
 Feature: List movies
   In order to keep myself up to date about latest movie,
   As a user,
   I want to view the last movie.
 
   Background: There are 10 registered movies
-    Given Exists a user "user" with password "password"
-    And Exists movies registered
-      | name            | date        |
-      | The First       | 1970-01-01  |
-      | The Second      | 1970-01-02  |
-      | The Third       | 1970-01-03  |
-      | The Fourth      | 1970-01-04  |
-      | The Fifth       | 1970-01-05  |
-      | The Sixth       | 1970-01-05  |
-      | The Seventh     | 1970-01-05  |
-      | The Eighth      | 1970-01-05  |
-      | The Ninth       | 1970-01-05  |
-      | The Tenth       | 1970-01-05  |
-
+    Given Exist movies registered
+      | name            | release  |
+      | The First       | 1970     |
+      | The Second      | 1970     |
+      | The Third       | 1970     |
+      | The Fourth      | 1970     |
+      | The Fifth       | 1970     |
+      | The Sixth       | 1970     |
+      | The Seventh     | 1970     |
+      | The Eighth      | 1970     |
+      | The Ninth       | 1970     |
+      | The Tenth       | 1970     |
 
   Scenario: List movies
     When I list movies

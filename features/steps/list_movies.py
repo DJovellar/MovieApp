@@ -6,7 +6,7 @@ from django.db.models import Q
 
 use_step_matcher("parse")
 
-@given(u'Exists movies registered')
+@given(u'Exist movies registered')
 def step_impl(context):
     from myMovieApp.models import Movie
     for row in context.table:
@@ -23,10 +23,8 @@ def step_impl(context):
 def step_impl(context):
     movie_links = context.browser.find_by_css('div#content ul li a')
     for i, row in list(enumerate(context.table)):
-        print(movie_links[i].text)
-        print(row['name'])
         assert row['name'] == movie_links[i].text
 
-@then(u'The list contains 10 movies')
-def step_impl(context):
-    assert 10 == len(context.browser.find_by_css('div#content ul li a'))
+@then(u'The list contains {count:n} movies')
+def step_impl(context, count):
+    assert count == len(context.browser.find_by_css('div#content ul li a'))
