@@ -19,6 +19,11 @@ For the docker-container part, it needs the docker-engine. To install it, run fo
 ```bash
 yum install docker-engine  
 ```
+In order to run tests we have used behave; a tool/resource that uses tests written in a natural language style:
+```
+pip install behave
+```
+For behave to work we also used Chrome and chromedriver.
 ## Usage
 
 - Django project: 
@@ -59,6 +64,11 @@ yum install docker-engine
 	
 	Finally, open [docker link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login 		is the same user the one created for the django project.
 	
+- Behave (testing):
+	Several basic scenarios have been tested using behave. In orden to run the tests:
+	```
+	behave
+	```
 ## Deployment proposal
 
 See this [document](https://github.com/DJovellar/MovieApp/blob/master/deployment_proposed_sol.pdf) for the proposal.
