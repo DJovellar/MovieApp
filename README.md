@@ -1,7 +1,5 @@
 # Movie Application web
-This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films (including the trailer) and where to buy and/or watch the movie. Additionally, users can rate and write reviews about films.
-
-For now we have implemented the login, admin page, home and the structure of the database so far.
+This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films. Additionally, users can rate and write reviews about films.
 
 ## Authors
 - David Jovellar Fantova
@@ -41,8 +39,9 @@ For behave to work we also used Chrome and chromedriver.
 
 	In order to see the application implemened in Heroku open: [heroku link](https://movieappwebproject.herokuapp.com/login).
 	````
-	User: admin	
-	Password: admin123
+	User: *****	
+	Password: ********
+	VIEW VIRTUAL CAMPUS activity for username and password
 	````
 
 - Docker-container implementation:
@@ -72,4 +71,5 @@ For behave to work we also used Chrome and chromedriver.
 ## Deployment proposal
 
 See this [document](https://github.com/DJovellar/MovieApp/blob/master/deployment_proposed_sol.pdf) for the proposal.
+
 
