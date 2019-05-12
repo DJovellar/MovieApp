@@ -41,8 +41,8 @@ For behave to work we also used Chrome and chromedriver.
 	````
 	User: *****	
 	Password: ********
-	**VIEW VIRTUAL CAMPUS Edgar Moreno Molina's 2nd deliverable activity presentation for the admin's username and password. ** 
 	````
+	**VIEW VIRTUAL CAMPUS Edgar Moreno Molina's (emm26) 2nd deliverable activity presentation for the admin's username and password.** 
 	It is possible to login as a user with the admin credentials.
 - Docker-container implementation:
 
