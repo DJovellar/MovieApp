@@ -1,7 +1,5 @@
 # Movie Application web
-This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films (including the trailer) and where to buy and/or watch the movie. Additionally, users can rate and write reviews about films.
-
-For now we have implemented the login, admin page, home and the structure of the database so far.
+This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films. Additionally, users can rate and write reviews about films.
 
 ## Authors
 - David Jovellar Fantova
