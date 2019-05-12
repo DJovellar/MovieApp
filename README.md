@@ -43,7 +43,7 @@ For behave to work we also used Chrome and chromedriver.
 	Password: ********
 	VIEW VIRTUAL CAMPUS activity for username and password
 	````
-
+	It is possible to login as a user with the admin credentials.
 - Docker-container implementation:
 
 	First of all we need to start the docker and enable it with this commands:
