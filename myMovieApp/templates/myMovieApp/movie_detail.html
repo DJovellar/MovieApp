@@ -100,14 +100,14 @@
 </span>
 
 {% if user.is_authenticated %}
-<div>
+<div style="margin-top: -160px">
   <h3 style="margin-left: 385px">Add Review</h3>
   <form style="margin-left: 480px" action="{% url 'review_create' movie.id %}" method="post">
       {% csrf_token %}
       <p style="margin-left: -150px; margin-bottom: 10px">
         Message:
       </p>
-      <textarea style="width:400px; height:150px; margin-left: 180px" name="description" id="description" rows="4"></textarea>
+      <textarea maxlength="25" style="width:400px; height:150px; margin-left: 180px" name="description" id="description" rows="4"></textarea>
       <p style="margin-left: -170px; margin-top: 5px">Rating:</p>
       <body>
         <div style="margin-left: 45%; margin-top: -10px" class="rate">
@@ -126,7 +126,7 @@
       <input style="margin-bottom: 100px; margin-left: -25%; margin-top: -10px; background-color: #0066FF" type="submit" value="Review" />
   </form>
 </div>
-
+</div>
 {% endif %}
 
 {% endblock %}
