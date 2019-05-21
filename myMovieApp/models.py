@@ -6,7 +6,7 @@ from django.urls import reverse
 class Movie(models.Model):
     name = models.CharField(max_length=50)
     release = models.IntegerField()
-    genre = models.CharField(max_length=50)
+    genre = models.CharField(max_length=500)
     description = models.CharField(max_length=1000)
     cast = models.CharField(max_length=1000)
     trailer = models.CharField(max_length=500)
