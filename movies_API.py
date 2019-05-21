@@ -25,7 +25,7 @@ def get_trailer(movie_name):
         id = vid['href'].split("=")[1]
         return ('https://www.youtube.com/embed/' + id)
 
-movie_prefixes = ["the dark", "godfather", "inception", "matrix", "hobbit", "lord", "seven", "interstellar", "la", "american", "whiplash", "spiderman", "gladiator", "apocalypse", "aliens", "coco"]
+movie_prefixes = ["the dark", "godfather", "inception", "matrix", "hobbit", "lord", "seven", "interstellar", "la", "american", "whiplash", "spiderman", "gladiator", "apocalypse", "aliens"]
 print("About to load a couple movies from API into database...")
 
 for prefix in movie_prefixes:
