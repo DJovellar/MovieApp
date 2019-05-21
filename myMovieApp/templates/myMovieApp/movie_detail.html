@@ -100,7 +100,7 @@
 </span>
 
 {% if user.is_authenticated %}
-<div style="margin-top: -160px">
+<div>
   <h3 style="margin-left: 385px">Add Review</h3>
   <form style="margin-left: 480px" action="{% url 'review_create' movie.id %}" method="post">
       {% csrf_token %}
@@ -110,7 +110,7 @@
       <textarea style="width:400px; height:150px; margin-left: 180px" name="description" id="description" rows="4"></textarea>
       <p style="margin-left: -170px; margin-top: 5px">Rating:</p>
       <body>
-        <div style="margin-left: 355px; margin-top: -10px" class="rate">
+        <div style="margin-left: 45%; margin-top: -10px" class="rate">
           <input type="radio" id="star5" name="rating" value="5"/>
           <label for="star5" title="text">5 stars</label>
           <input type="radio" id="star4" name="rating" value="4" />
@@ -123,10 +123,10 @@
           <label for="star1" title="text">1 star</label>
         </div>
       </body>
-      <input style="margin-bottom: 100px; margin-left: -100px; margin-top: -10px; background-color: #0066FF" type="submit" value="Review" />
+      <input style="margin-bottom: 100px; margin-left: -25%; margin-top: -10px; background-color: #0066FF" type="submit" value="Review" />
   </form>
 </div>
-</div>
+
 {% endif %}
 
 {% endblock %}
