@@ -5,43 +5,49 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <span vocab="http://schema.org/" typeof="Movies">
-
-<h1 align="left" style="margin-left: 120px">
+<div style="margin-bottom: 300px">
+<h1 align="center" style="margin-bottom: 50px; margin-left: 0px">
     <u><span property="name">{{ movie.name }}</span></u>
 </h1>
 
-<h4 align="left" style="margin-left: 30px; margin-top: 20px">Description:</h4>
+<h4 align="left" style="margin-left: 150px; margin-top: 20px">Description:</h4>
 <div align="left">
-<p style="text-align: left; width: 500px; margin-left: 30px;">
+<p style="text-align: left; width: 500px; margin-left: 150px;">
     {{ movie.description }} <br/>
 </p>
 </div>
 
-<h4 align="left" style="margin-left: 30px; margin-top: 20px">Genre:</h4>
+<h4 align="left" style="margin-left: 150px; margin-top: 20px">Genre:</h4>
 <div align="left">
-<p style="text-align: left; width: 500px; margin-left: 30px;">
+<p style="text-align: left; width: 500px; margin-left: 150px;">
     {{ movie.genre }} <br/>
 </p>
 </div>
 
-<h4 align="left" style="margin-left: 30px; margin-top: 20px">Cast:</h4>
+<h4 align="left" style="margin-left: 150px; margin-top: 20px">Cast:</h4>
 <div align="left">
-<p style="text-align: left; width: 500px; margin-left: 30px;">
+<p style="text-align: left; width: 500px; margin-left: 150px;">
     {{ movie.cast }} <br/>
 </p>
 </div>
 
-<h4 align="left" style="margin-left: 30px; margin-top: 20px">Release year:</h4>
+<h4 align="left" style="margin-left: 150px; margin-top: 20px">Release year:</h4>
 <div align="left">
-<p style="text-align: left; width: 500px; margin-left: 30px;">
+<p style="text-align: left; width: 500px; margin-left: 150px;">
     {{ movie.release }} <br/>
 </p>
+
+<div style="margin-left: 150px; margin-top: 50px">
+<iframe width="560" height="315" src={{movie.trailer}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
-<div>
-<h2 style="margin-top: -350px; margin-left: 500px">Reviews</h2>
+
+</div>
+<div style="margin-bottom: 200px">
+<h2 style="margin-top: -650px; margin-left: 630px">Reviews</h2>
 {% if movie.review_set.all|length > 0 %}
 <span rel="aggregateRating">
-    <p style="margin-left: 500px"typeof="AggregateRating">
+    <p style="margin-left: 630px"typeof="AggregateRating">
         Average rating <span property="ratingValue">{{ movie.averageRating|stringformat:".1f" }}</span>/5
         {% with movie.review_set.all|length as reviewCount %}
         from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
@@ -52,7 +58,7 @@
 
 <ul rel="review">
     {% for review in movie.review_set.all %}
-        <li style="list-style-type:none; border:2px solid grey; width: 400px; height: 120px; text-align: left; margin-left: 450px" typeof="Review">
+        <li style="list-style-type:none; border:2px solid grey; width: 400px; height: 120px; text-align: left; margin-left: 600px" typeof="Review">
           <div style="margin-left: 10px; margin-top: 10px">
             <p rel="reviewRating" typeof="Rating">
                 <span property="ratingValue">{{ review.rating }}</span>/5 stars
@@ -86,7 +92,7 @@
 </ul>
 {% endif %}
 {% if movie.review_set.all|length == 0 %}
-<p style="margin-left: 500px"> Nobody has made a review yet </p>
+<p style="margin-left: 600px"> Nobody has made a review yet </p>
 {% endif %}
 
 </div>
@@ -94,17 +100,17 @@
 </span>
 
 {% if user.is_authenticated %}
-
-  <h3 style="margin-left: 250px">Add Review</h3>
-  <form style="margin-left: 380px" action="{% url 'review_create' movie.id %}" method="post">
+<div style="margin-top: -160px">
+  <h3 style="margin-left: 385px">Add Review</h3>
+  <form style="margin-left: 480px" action="{% url 'review_create' movie.id %}" method="post">
       {% csrf_token %}
-      <p style="margin-left: -225px; margin-bottom: 0px">
+      <p style="margin-left: -150px; margin-bottom: 10px">
         Message:
       </p>
-      <textarea style="width:400px; margin-left: 110px" name="description" id="description" rows="4"></textarea>
-      <p style="margin-left: -245px; margin-top: 5px">Rating:</p>
+      <textarea style="width:400px; height:150px; margin-left: 180px" name="description" id="description" rows="4"></textarea>
+      <p style="margin-left: -170px; margin-top: 5px">Rating:</p>
       <body>
-        <div style="margin-left: 55px; margin-top: -10px" class="rate">
+        <div style="margin-left: 355px; margin-top: -10px" class="rate">
           <input type="radio" id="star5" name="rating" value="5"/>
           <label for="star5" title="text">5 stars</label>
           <input type="radio" id="star4" name="rating" value="4" />
@@ -117,8 +123,10 @@
           <label for="star1" title="text">1 star</label>
         </div>
       </body>
-      <input style="margin-bottom: 100px; margin-left: 80px; margin-top: 10px; background-color: #0066FF" type="submit" value="Review" />
+      <input style="margin-bottom: 100px; margin-left: -100px; margin-top: -10px; background-color: #0066FF" type="submit" value="Review" />
   </form>
+</div>
+</div>
 {% endif %}
 
 {% endblock %}

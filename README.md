@@ -1,7 +1,5 @@
 # Movie Application web
-This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films (including the trailer) and where to buy and/or watch the movie. Additionally, users can rate and write reviews about films.
-
-For now we have implemented the login, admin page, home and the structure of the database so far.
+This repository contains a django project and the files needed to run docker and heroku with it. The project is expected to deal with users that want to find out information about films. Additionally, users can rate and write reviews about films.
 
 ## Authors
 - David Jovellar Fantova
@@ -19,6 +17,11 @@ For the docker-container part, it needs the docker-engine. To install it, run fo
 ```bash
 yum install docker-engine  
 ```
+In order to run tests we have used behave; a tool/resource that uses tests written in a natural language style:
+```
+pip install behave
+```
+For behave to work we also used Chrome and chromedriver.
 ## Usage
 
 - Django project: 
@@ -36,10 +39,11 @@ yum install docker-engine
 
 	In order to see the application implemened in Heroku open: [heroku link](https://movieappwebproject.herokuapp.com/login).
 	````
-	User: admin	
-	Password: admin123
+	User: *****	
+	Password: ********
 	````
-
+	**VIEW VIRTUAL CAMPUS Edgar Moreno Molina's (emm26) 2nd deliverable activity presentation for the admin's username and password.** 
+	It is possible to login as a user with the admin credentials.
 - Docker-container implementation:
 
 	First of all we need to start the docker and enable it with this commands:
@@ -59,7 +63,13 @@ yum install docker-engine
 	
 	Finally, open [docker link](http://0.0.0.0:8000/login) in order to see the web application. The user requested for login 		is the same user the one created for the django project.
 	
+- Behave (testing):
+	Several basic scenarios have been tested using behave. In orden to run the tests:
+	```
+	behave
+	```
 ## Deployment proposal
 
 See this [document](https://github.com/DJovellar/MovieApp/blob/master/deployment_proposed_sol.pdf) for the proposal.
+
 
