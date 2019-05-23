@@ -25,7 +25,7 @@ def get_trailer(movie_name):
         id = vid['href'].split("=")[1]
         return ('https://www.youtube.com/embed/' + id)
 
-movie_prefixes = ["the dark", "godfather", "inception", "matrix", "hobbit", "lord", "seven", "interstellar", "la", "american", "whiplash", "spiderman", "gladiator", "apocalypse", "aliens"]
+movie_prefixes = ["the dark", "godfather", "inception", "matrix", "hobbit", "lord", "seven", "interstellar", "la", "american", "whiplash", "spiderman", "gladiator", "apocalypse", "aliens", "coco"]
 print("About to load a couple movies from API into database...")
 
 for prefix in movie_prefixes:
@@ -35,13 +35,19 @@ for prefix in movie_prefixes:
     print("Inserting: " + movie_name)
     movie_release = int((parsed_movie.get("Year")).split("–")[0])
     movie_genre = parsed_movie.get("Genre")
+    movie_director = parsed_movie.get("Director")
+    movie_duration = parsed_movie.get("Runtime")
     movie_cast = parsed_movie.get("Actors")
+    movie_country = parsed_movie.get("Country")
     movie_description = parsed_movie.get("Plot")
     movie_trailer = get_trailer(movie_name)
     m = Movie(name = movie_name,
               release = movie_release,
               genre = movie_genre,
               description = movie_description,
+              duration = movie_duration,
+              director = movie_director,
+              country = movie_country,
               cast = movie_cast,
               trailer = movie_trailer)
     m.save()
