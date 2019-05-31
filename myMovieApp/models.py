@@ -9,6 +9,10 @@ class Movie(models.Model):
     genre = models.CharField(max_length=50)
     description = models.CharField(max_length=1000)
     cast = models.CharField(max_length=1000)
+    trailer = models.CharField(max_length=500)
+    director = models.CharField(max_length=200)
+    country = models.CharField(max_length=100)
+    duration = models.CharField(max_length=50)
 
     def __unicode__(self):
         return u"%s" % self.name
